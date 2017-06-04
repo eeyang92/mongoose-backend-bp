@@ -1,7 +1,7 @@
 // @flow
 import { Strategy as LocalStrategy } from 'passport-local'
 
-import User from './schema/user'
+import User from './schema/User'
 
 export default function setup(passport) {
 	passport.serializeUser((user, done) => {

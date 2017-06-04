@@ -1,5 +1,5 @@
 // @flow
 export default {
-	'secret': '???',
+	'secret': 'secret!!!',
 	'url' : 'mongodb://localhost/myproject'
 }

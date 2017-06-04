@@ -9,16 +9,18 @@ import passport from 'passport'
 import connectMongo from 'connect-mongo'
 const MongoStore = connectMongo(session)
 
-import passportSetup from './passport_mw'
-import dbConfig from './db'
+import passportSetup from '../common/passport_mw'
+import dbConfig from '../common/db'
 import publicRoutes from './routes/public_routes'
 // import protectedRoutes from './routes/protected_routes'
+
+import type { $Request, $Response } from 'express'
 
 mongoose.connect(dbConfig.url)
 mongoose.Promise = Promise
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3003
 
 app.use(session({
 	store: new MongoStore({
@@ -37,7 +39,7 @@ app.use(bodyParser.urlencoded({
 }))
 passportSetup(passport)
 
-app.use((req, res, next) => {
+app.use((req: $Request, res: $Response, next) => {
 	res.header('Access-Control-Allow-Origin', 'http://localhost:3002')
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
 	res.header('Access-Control-Allow-Headers', 'Content-Type')
@@ -50,5 +52,5 @@ app.use('/', publicRoutes)
 // app.use('/auth', protectedRoutes)
 
 app.listen(port, () => {
-	console.log(`Server listening on port ${port}!`)
+	console.log(`BG Server listening on port ${port}!`)
 })

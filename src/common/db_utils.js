@@ -56,3 +56,9 @@ export function insertPreHook(obj, hook) {
 		}
 	}
 }
+
+// export class PersistanceManager {
+// 	constructor(object, ...otherObjects) {
+
+// 	}
+// }

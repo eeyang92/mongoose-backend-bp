@@ -2,12 +2,12 @@
 import mongoose, { Schema } from 'mongoose'
 import classToSchema from 'class-to-mongoose-schema'
 
-export class User {
-	constructor() {
-		this.username = String
-		this.password = String
-		this.admin = Boolean
-	}
+import { Base } from './Base'
+
+export class User extends Base {
+	username = String
+	password = String
+	admin = Boolean
 }
 
 const userSchema = classToSchema(new User())
